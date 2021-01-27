@@ -1,0 +1,31 @@
+<%= form_with(model: briefing) do |form| %>
+  <% if briefing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(briefing.errors.count, "error") %> prohibited this briefing from being saved:</h2>
+
+      <ul>
+        <% briefing.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.collection_radio_buttons(:bot_id, Bot.all, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= form.collection_check_boxes(:feed_ids, Feed.all, :id, :name) %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

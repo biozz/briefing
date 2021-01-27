@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bots</h1>
+
+<ul>
+  <% @bots.each do |bot| %>
+    <li>
+      <%= bot.name %><br>
+      <%= link_to 'Show', bot %>
+      <%= link_to 'Edit', edit_bot_path(bot) %>
+      <%= link_to 'Destroy', bot, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+
+<%= link_to 'New Bot', new_bot_path %>

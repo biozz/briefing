@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Briefings</h1>
+
+<ul>
+  <% @briefings.each do |briefing| %>
+    <li>
+      <%= briefing.name %><br>
+      <%= link_to 'Show', briefing %>
+      <%= link_to 'Edit', edit_briefing_path(briefing) %>
+      <%= link_to 'Destroy', briefing, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+<%= link_to 'New Briefing', new_briefing_path %>

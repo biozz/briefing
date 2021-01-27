@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Feeds</h1>
+
+      <ul>
+    <% @feeds.each do |feed| %>
+      <li><a href="<%= feed.url %>"><%= feed.name %></a><br>
+        <%= link_to 'Show', feed %>
+        <%= link_to 'Edit', edit_feed_path(feed) %>
+        <%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+      </ul>
+
+<br>
+
+<%= link_to 'New Feed', new_feed_path %>

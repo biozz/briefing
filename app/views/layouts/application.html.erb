@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RssTg</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <%= link_to "RSS TG", root_path, class: "navbar-brand" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <%= active_link_to 'Briefings', briefings_path, class: 'nav-link', active: /(\/$)|(^\/briefings)/ %>
+            </li>
+            <li class="nav-item">
+            <%= active_link_to 'Feeds', feeds_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= active_link_to 'Bots', bots_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to 'Sidekiq', '/sidekiq', class: 'nav-link', target: '_blank' %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

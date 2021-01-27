@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @briefing.name %>
+</p>
+
+<p>
+  <strong>Feeds:</strong>
+  <ul>
+    <% @briefing.feed.each do |feed| %>
+      <li><a href="<%= feed.url %>"><%= feed.name %></a></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_briefing_path(@briefing) %> |
+<%= link_to 'Back', briefings_path %>
