@@ -9,4 +9,3 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle config set --local without 'development' \
     && bundle install
-
