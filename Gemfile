@@ -39,6 +39,10 @@ gem 'jquery-rails'
 # RSS
 gem 'feedjira'
 gem 'httparty'
+gem 'kramdown', '~> 2.3'
+
+# Production database
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

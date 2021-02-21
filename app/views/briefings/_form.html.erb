@@ -24,6 +24,19 @@
     <%= form.collection_check_boxes(:feed_ids, Feed.all, :id, :name) %>
   </div>
 
+  <div class="field">
+    <%= form.select(:period, Briefing.periods.keys.map {|period| [period.titleize, period]}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :interval %>
+    <%= form.text_field :interval %>
+  </div>
+
+  <div class="field">
+    <%= form.label :next_run_at %>
+    <%= form.datetime_field :next_run_at, value: briefing.next_run_at or DateTime.new %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

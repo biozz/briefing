@@ -1,4 +1,5 @@
 class BotsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_bot, only: %i[show edit update destroy]
 
   # GET /bots or /bots.json
@@ -63,6 +64,6 @@ class BotsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def bot_params
-    params.require(:bot).permit(:name, :token)
+    params.require(:bot).permit(:name, :token, :chat_id)
   end
 end

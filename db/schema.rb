@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_213436) do
+ActiveRecord::Schema.define(version: 2021_02_07_171941) do
 
   create_table "bots", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_01_24_213436) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
+    t.integer "chat_id"
     t.index ["name"], name: "index_bots_on_name", unique: true
     t.index ["token"], name: "index_bots_on_token", unique: true
     t.index ["user_id"], name: "index_bots_on_user_id"
@@ -29,6 +30,10 @@ ActiveRecord::Schema.define(version: 2021_01_24_213436) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.integer "bot_id", null: false
+    t.datetime "last_run_at"
+    t.datetime "next_run_at"
+    t.integer "period"
+    t.integer "interval"
     t.index ["bot_id"], name: "index_briefings_on_bot_id"
     t.index ["name"], name: "index_briefings_on_name", unique: true
     t.index ["user_id"], name: "index_briefings_on_user_id"
@@ -49,6 +54,17 @@ ActiveRecord::Schema.define(version: 2021_01_24_213436) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["feed_id"], name: "index_entries_on_feed_id"
+  end
+
+  create_table "feed_logs", force: :cascade do |t|
+    t.text "title"
+    t.text "url"
+    t.text "summary"
+    t.integer "feed_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "published_at"
+    t.index ["feed_id"], name: "index_feed_logs_on_feed_id"
   end
 
   create_table "feeds", force: :cascade do |t|
@@ -78,4 +94,5 @@ ActiveRecord::Schema.define(version: 2021_01_24_213436) do
   add_foreign_key "briefings", "bots"
   add_foreign_key "briefings", "users"
   add_foreign_key "entries", "feeds"
+  add_foreign_key "feed_logs", "feeds"
 end

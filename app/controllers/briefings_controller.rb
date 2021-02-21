@@ -1,6 +1,6 @@
 class BriefingsController < ApplicationController
-  before_action :set_briefing, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :set_briefing, only: %i[show edit update destroy]
 
   # GET /briefings or /briefings.json
   def index
@@ -64,6 +64,7 @@ class BriefingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def briefing_params
-    params.require(:briefing).permit(:name, :bot_id, { feed_ids: [] })
+    params.require(:briefing).permit(:name, :bot_id, :period, :interval, :next_run_at,
+                                     { feed_ids: [] })
   end
 end

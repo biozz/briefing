@@ -1,0 +1,6 @@
+<h1>Logs for <%= @feed.name %></h1>
+<ul>
+  <% @feed_logs.each do |log| %>
+  <li><%= log.title %> - <%= log.published_at %> - <%= link_to('Show', url_for(controller: 'feed_logs', action: 'show', feed_id: @feed.id, id: log.id)) %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,7 @@
+:schedule:
+  briefing_publisher:
+    cron: '0 0 * * * *'
+    class: BriefingPublisher
+  feed_scraper:
+    cron: '0 0 * * * *'
+    class: FeedScraper
